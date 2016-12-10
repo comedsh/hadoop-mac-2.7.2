@@ -1281,6 +1281,7 @@ public class Job extends JobContextImpl implements JobContext {
          throws IOException, InterruptedException, ClassNotFoundException {
     ensureState(JobState.DEFINE);
     setUseNewAPI();
+    // 初始化 Cluster，单机模式 - 使用 LocalFileSystem，伪分布式，全分布式
     connect();
     final JobSubmitter submitter = 
         getJobSubmitter(cluster.getFileSystem(), cluster.getClient());
